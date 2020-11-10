@@ -1,0 +1,57 @@
+<script>
+
+    do { 
+    do {
+        var jeruk = prompt('Masukan Jumlah Jeruk' + '\n' + 'Stok Jeruk 7');
+    if (jeruk > 7  ){
+        alert ('Stok Jeruk hanya 7'+'\n' + 'Masukkan Input Kembali')
+    } } while (jeruk >7)
+
+    do {
+        var mangga = prompt('Masukan jumlah Mangga' + '\n' + 'Stok Mangga 8');
+    if (mangga > 8  ){
+        alert('Stok Mangga hanya 8')
+    } }  while (mangga > 8)
+
+    do {
+        var anggur = prompt('Masukan jumlah anggur' + '\n' + 'Stok Anggur 10');
+    if(anggur>10 ){
+        alert('Stok Anggur hanya 10')
+    } } while (anggur > 10)
+
+    if (jeruk == 0 && mangga == 0 && anggur == 0 || anggur == null || mangga == null || jeruk == null) {
+        alert('Terjadi Kesalahan Input'+ '\n'+'Masukan Kembali Input')
+        }
+    } while (jeruk == 0 && mangga == 0 && anggur == 0 || anggur == null || mangga == null || jeruk == null ) 
+
+    var a = jeruk * 10000;
+    var b = mangga * 15000;
+    var c = anggur * 20000;
+    var total = a + b + c;
+
+    if (jeruk<=7 && mangga<=8 && anggur<=10 ) {
+        alert(
+            
+           'Jumlah Jeruk ' + jeruk + ' x Rp10000 = ' + a + '\n'
+            + 'Jumlah Mangga ' + mangga +' x Rp15000 = ' + b + '\n'
+            + 'Jumlah Anggur ' + anggur + ' x Rp20000 = ' + c + '\n'
+            + 'Total  = Rp' + total + '\n' 
+        )
+        do {
+        var uang = prompt('Masukan Jumlah Pembayaran' + '\n' +total)
+        var kembalian = uang - total
+        if (uang >= total){
+            alert(
+                'Total Pembayaran Rp ' + total + '\n'
+                + 'Uang Pembayaran Rp ' + uang +'\n'
+                + 'Kembalian Rp' +kembalian
+            )
+            alert('Terima Kasih')
+        } else {
+            var kurang = uang - total
+            alert('Uang Kurang Sebesar' + kurang)
+        }} while (uang < total)
+    } else {
+        alert('Terjadi Kesalahan Input')
+    }
+</script>

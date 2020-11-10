@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    function output(){
+        let satu = parseInt(document.querySelector('input[name = satu]:checked').value);
+        let dua = parseInt(document.querySelector('input[name = dua]:checked').value);
+        let tiga = parseInt(document.querySelector('input[name = tiga]:checked').value);
+        let empat = parseInt(document.querySelector('input[name = empat]:checked').value);
+        let lima = parseInt(document.querySelector('input[name = lima]:checked').value);
+        
+        var output = satu + dua + tiga + empat + lima
+        return document.getElementById('output').innerHTML = 'Nilai Akhir Anda '+ output 
+
+    }
+</script>
+<body>
+    <h4>1. Siapakah Presiden ketiga Republik Indonesia?</h4>
+    <input type="radio" name="satu" value="20">B.J Habibie
+    <input type="radio" name="satu" value="0">Gusdur
+    <input type="radio" name="satu" value="0">Soekarno
+    <input type="radio" name="satu" value="0">Jokowi
+    <h4>2. Berikut Bahasa Pemprograman, kecuali..</h4>
+    <input type="radio" name="dua" value="0">Phyton
+    <input type="radio" name="dua" value="0">Java
+    <input type="radio" name="dua" value="0">HTML
+    <input type="radio" name="dua" value="20">Redtube
+    <h4>3. Jenis minuman beralkohol, kecuali..</h4>
+    <input type="radio" name="tiga" value="0">Tequila
+    <input type="radio" name="tiga" value="0">Vodka
+    <input type="radio" name="tiga" value="20">Kelapa
+    <input type="radio" name="tiga" value="0">Rum
+    <h4>4. Berikut Cap Orang Tua, kecuali..</h4>
+    <input type="radio" name="empat" value="25">KawaKawa
+    <input type="radio" name="empat" value="0">Intisari
+    <input type="radio" name="empat" value="0">Amer Gold
+    <input type="radio" name="empat" value="0">Aput
+    <h4>5. Bar di Bandung adalah</h4>
+    <input type="radio" name="lima" value="20">Upstairs
+    <input type="radio" name="lima" value="0">Cupola
+    <input type="radio" name="lima" value="0">Hailey
+    <input type="radio" name="lima" value="0">Kitaku
+    <br><br>
+    <button onclick="output()">Cek Ah</button>
+
+    <h3 id="output"></h3>
+
+</body>
+</html>

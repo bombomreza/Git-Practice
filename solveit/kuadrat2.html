@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <script>
+        function onBtnClick() {
+            var num = parseInt(document.getElementById('num').value);
+            var pangkat = parseInt(document.getElementById('pangkat').value);
+            var kuadrat = Math.pow(num, pangkat);
+            var output = "Hasil " + num + "<sup>" +pangkat+"</sup>" + ' = ' + kuadrat;
+            document.getElementById('output').innerHTML = output
+            console.log (output)
+        }
+    </script>
+<body>
+        <p>Masukkan Angka: </p>
+        <input type="number" id="num" />
+        <input type="number" id="pangkat"/>
+        <button onclick="onBtnClick()">
+            Kuadratkan
+        </button>
+        <h3 id="output"></h3>
+</body>
+</html>

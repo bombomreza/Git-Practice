@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+
+    function tambah(){
+    var num1 = parseInt(document.getElementById('num1').value);
+    var num2 = parseInt(document.getElementById('num2').value);
+        var output = parseInt(num1 + num2);
+        return document.getElementById('output').innerHTML = num1 + ' + ' + num2 + ' = ' + output;
+    }
+    function kurang(){
+    var num1 = parseInt(document.getElementById('num1').value);
+    var num2 = parseInt(document.getElementById('num2').value);
+        var output = parseInt(num1 - num2);
+        return document.getElementById('output').innerHTML = num1 + ' - ' + num2 + ' = ' + output;
+    }
+    function bagi(){
+    var num1 = parseInt(document.getElementById('num1').value);
+    var num2 = parseInt(document.getElementById('num2').value);
+        var output = parseInt(num1 / num2);
+        return document.getElementById('output').innerHTML = num1 + ' / ' + num2 + ' = ' + output;
+    }
+    function kali(){
+    var num1 = parseInt(document.getElementById('num1').value);
+    var num2 = parseInt(document.getElementById('num2').value);
+        var output = parseInt(num1 * num2);
+        return document.getElementById('output').innerHTML = num1 + ' x ' + num2 + ' = ' + output;
+    }
+    function modulus(){
+    var num1 = parseInt(document.getElementById('num1').value);
+    var num2 = parseInt(document.getElementById('num2').value);
+        var output = parseInt(num1 % num2);
+        return document.getElementById('output').innerHTML = num1 + ' % ' + num2 + ' = ' + output;
+    }
+    function pangkat(){
+    var num1 = parseInt(document.getElementById('num1').value);
+    var num2 = parseInt(document.getElementById('num2').value);
+        var output = parseInt(Math.pow(num1 , num2));
+        return document.getElementById('output').innerHTML = num1 + '<sup>' + num2 + '</sup>' +  ' = ' + output;
+    }
+
+</script>
+<body>
+    <h1>Kalkulator Sederhana</h1>
+    Angka 1 <input type="number" id="num1">
+    <br>
+    <br>
+    Angka 2 <input type="number" id="num2">
+    <br>
+    <br>
+    <button onclick="tambah()">Tambah</button>
+    <button onclick="kurang()">Kurang</button>
+    <button onclick="bagi()">Bagi</button>
+    <button onclick="kali()">Kali</button>
+    <button onclick="modulus()">Modulus</button>
+    <button onclick="pangkat()">Pangkat</button>
+    <br>
+    <h3 id="output"></h3>
+</body>
+</html>

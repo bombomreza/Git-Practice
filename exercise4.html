@@ -1,0 +1,122 @@
+<script>
+
+var buah = ['Apel', 'Mangga', 'Jeruk'];
+var stok = [10, 15, 20];
+var harga = [10000, 15000, 20000]
+var qty = [0, 0, 0]
+var total = [0, 0, 0]
+var mainMenu = true;
+var tanya = true;
+var produk = '';
+var qtyMenu = true;
+var uangMenu = true;
+
+do{
+    do{
+    var menu = parseInt(prompt(
+        'Apa Yang ingin anda lakukan? \n\n'+
+        '0. Daftar Buah\n'+
+        '1. Menambah Buah\n'+
+        '2. Mengurangi Buah\n'+
+        '3. Membeli Buah'
+    ))
+    if (menu==0){
+        var produk = "";
+        for (a = 0; a < buah.length; a++){
+            produk += buah[a] + ' |' + 'Stok ' + stok[a] + '|' + 'Harga Rp ' + harga[a] + '\n'
+        }
+        alert('Daftar Buah \n\n'+ produk)
+    }
+    else if (menu==1){
+        var buahNew = prompt("Masukkan Nama Buah");
+        while (buahNew == "") {
+            alert("Masukkan Nama Buah");
+            buahNew = prompt("Masukkan Nama Buah");
+        }
+        var stokNew = prompt("Masukkan Stok Buah");
+        while (stokNew == "") {
+            alert("Masukkan Stok Buah");
+            stokNew = prompt("Masukkan Stok Buah" )
+        }
+        var hargaNew = prompt("Masukkan Harga buah");
+        while (hargaNew == "") {
+            alert("Masukkan Harga Buah");
+            hargaNew = prompt("Masukkan Harga Buah")
+        }
+        alert('Buah ' + buahNew + " Telah Ditambahkan")
+        buah.push(buahNew);
+        stok.push(stokNew);
+        harga.push(hargaNew);
+    }
+    else if (menu==2){
+        var produk = "";
+        for (var a = 0; a < buah.length; a++){
+        produk += [a] + '.' + buah[a] + '/' + stok[a] + " pcs / Rp. " + harga[a] + "\n";
+        }
+        var hapus = '';
+        hapus = prompt('Pilih Buah yang Akan Dihapus\n\n' + produk)
+        if(hapus ==""){
+            hapus = null;
+        }
+        else{buah.splice(hapus, 1);
+            alert("Buah Berhasil Dihapus")
+        }
+    }
+    else if (menu ==3){
+        do{
+            var sum = 0;
+            for(var a=0; a < buah.length; a++){
+                qty[a] = prompt('Masukan Jumlah' + buah[a] + '\n' +'Stok' + buah[a] +':'+stok[a])
+                while (qty[a] > stok[a] || qty[a] < 0 || qty[a] == ''){
+                    alert('Pembelian Tidak Sesuai \n Sisa Stok' + buah[a]+ ': '+stok[a]);
+                    qty[a] = prompt('Masukan Jumlah' + buah[a]+'\n'+'Stok Buah '+ buah[a]+': '+stok[a]);
+                }
+                sum +=qty[a];
+            }
+            if (sum==0){
+                console.log(sum);
+                alert('Minimal Isi Satu Buah');
+                qtyMenu = true;
+            }
+            else if (sum >0){
+                alert('Berhasil')
+                qtyMenu = false;
+            }
+        } while (qtyMenu)
+        
+        var total = '';
+        var totalharga = 0;
+        for (var a = [0]; a <buah.length; a++){
+            total +=buah[a] + ': ' + qty[a] + ' x ' + harga[a] + ' = ' + (qty[a] * harga[a]) + '\n';
+            totalharga += (qty[a] * harga[a]) 
+        }
+        alert ('Daftar Belanjaan : \n' +
+        total + '\n' + 'Total: Rp ' + totalharga);
+        do {
+            var uang = prompt ('Masukan Total Uang'+ '\n' + totalharga )
+            var kembalian = uang - totalharga
+                if (uang >= totalharga) {
+                alert(
+                    'Total Pembayaran Rp ' + totalharga + '\n'
+                    + 'Uang Pembayaran Rp ' + uang + '\n'
+                    + 'Kembalian Rp' + kembalian
+                )
+                alert('Terima Kasih')
+                }
+                else {
+                var kurang = uang - totalharga
+                alert('Uang Kurang Sebesar' + kurang)
+                }
+           
+        } while (uang < totalharga);
+    }
+
+    if (menu == 0 || menu == 1 || menu == 2 || menu == 3) {
+    tanya = false
+    }} while(tanya)
+
+    mainMenu=confirm('Apakah ingin lanjut?')
+}while(mainMenu)
+
+
+// </script>

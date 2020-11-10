@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table, th, td{
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 10px;
+        }
+    </style>
+</head>
+<script>
+    let arrProduct = [];
+
+    function output() {
+        let name = document.getElementById('name').value;
+        let harga = document.getElementById('harga').value;
+        let kondisi = document.querySelector('input[name=kondisi]:checked').value
+        let kategori = document.getElementById('kategori').value;
+        
+
+        arrProduct.push({
+            name, harga, kondisi, kategori
+        })
+        showProduct();
+
+    }
+    function showProduct() {
+        var output = "";
+        for (var i = 0; i < arrProduct.length; i++) {
+            output += ` <tr>
+                    <td>${arrProduct[i].name}</td>
+                    <td>${arrProduct[i].harga}</td>
+                    <td>${arrProduct[i].kondisi}</td>
+                    <td>${arrProduct[i].kategori}</td>                                       
+                `
+         console.log(output)       
+        }
+        document.getElementById('name').value = '';
+        document.getElementById('harga').value = '';
+        return (document.getElementById("output").innerHTML = output);
+    }
+
+    let arrHewan = [];
+
+    function output1(){
+        let name1 = document.getElementById('name1').value;
+        let harga1 = document.getElementById('harga1').value
+        let kelamin = document.querySelector('input[name=kelamin]:checked').value;
+        let status = document.querySelector('input[name=status]:checked').value
+
+        arrHewan.push({name1,harga1,kelamin,status})
+
+        showHewan();
+    }
+    function showHewan(){
+        var output1 = "";
+        for(var a = 0; a < arrHewan.length; a++){
+            output1 += `<tr>
+                <td>${arrHewan[a].name1}</td>
+                <td>${arrHewan[a].harga1}</td>
+                <td>${arrHewan[a].kelamin}</td>
+                <td>${arrHewan[a].status}</td>
+            `
+        }
+        document.getElementById('name1').value = '';
+        document.getElementById('harga1').value = '';
+        return (document.getElementById('output1').innerHTML = output1);
+    }
+
+</script>
+
+<body>
+    <center>
+        <table> 
+            <tr>
+                <th>Form Product</th>
+                <th>Form Hewan</th>
+            </tr>
+            <tr>
+                <td><br> Nama <input type="text" id="name"><br><br>
+                 Harga <input type="number" id="harga"> <br> <br>
+                 Kondisi
+                    <input type="radio" name="kondisi" value="Baru" checked> Baru
+                    <input type="radio" name="kondisi" value="Second">Second
+                <br><br>
+                Kategori
+                    <select name="kategori" id="kategori">
+                           <option value="Elektronik">Elektronik</option> 
+                           <option value="Pakaian">Pakaian</option>
+                           <option value="Otomotif">Otomotif</option>
+                    </select>
+                    <br><br>
+                    <center>
+                        <button onclick="output()">Tambahkan</button>
+                    </center>
+                    
+                <br>
+                </td>
+                <td>
+                    Nama <input type="text" id="name1"> <br><br>
+                    Harga<input type="text" id="harga1"> <br> <br>
+                    Kelamin
+                    <input type="radio" name="kelamin" value="Jantan" checked>Jantan
+                    <input type="radio" name="kelamin" value="Betina">Betina
+                    <br><br>
+                    Status
+                    <input type="radio" name="status" value="Liar" checked>Liar
+                    <input type="radio" name="status" value="Peliharaan">Peliharaan
+                    <br><br>
+                    <center> <button onclick="output1()">Tambahkan</button></center>
+
+
+                </td>
+            </tr>
+        </table>
+        <br>
+        <table>
+            <tr>
+                <th>
+                    <br>
+                    Data Product
+                    <br><br>
+                </th>
+                <th>
+                    Data Hewan
+                </th>
+            </tr>
+            
+            <tr>
+                <tr>
+                    <td>
+                <table>
+                    <tr><br>
+                        <th>Nama</th>
+                        <th>Harga</th>
+                        <th>Kondisi</th>
+                        <th>Kategori</th>
+                    </tr>
+                    <tbody id="output"></tbody>
+                </table>
+                <br>
+                </td>
+                <td>
+                    <table>
+                        <tr>
+                            <th>Nama</th>
+                            <th>Harga</th>
+                            <th>Kelamin</th>
+                            <th>Status</th>
+                        </tr>
+                        <tbody id="output1"></tbody>
+                    </table>
+                </td> 
+            </tr> 
+            <tr>
+            </tr>
+    </center>
+</body>
+
+</html>

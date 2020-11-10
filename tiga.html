@@ -1,0 +1,27 @@
+<!-- <script>
+    var angka = prompt('Masukan Angka')
+    if (angka % 2 == 0) {
+        alert ('ini genap')
+    } else {
+        alert('ini ganjil')
+    }
+</script> -->
+
+<script>
+    var massa = prompt('Masukan angka')
+    var tinggi = prompt('Masukan tinggi')
+    var a = Math.pow(tinggi,2)
+    var b = massa / a
+
+    if (b < 18.5) {
+        alert ('Berat Badan Kurang')
+    } else if (b >= 18.5 && b < 24.9) {
+        alert('Berat Badan Ideal')
+    } else if (b >= 25 && b < 29.9) {
+        alert('Berat Badan berlebih')
+    } else if (b >= 30 && b < 39.9) {
+        alert('Berat Badan sangat berlebih')
+    } else {
+        alert('Obesitas')
+    }
+</script>

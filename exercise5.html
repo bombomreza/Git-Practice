@@ -1,0 +1,90 @@
+<script>
+    let fruits = [
+        {name : 'Apel', price : 1000, stock : 5, qty : 0, total : 0},
+        {name : 'Anggur', price: 1500, stock: 7, qty: 0, total: 0 },
+        {name : 'Jeruk', price: 2000, stock: 8, qty: 0, total: 0 }
+    ]
+    alert (fruits)
+    function showList (){
+        var fruitList = 'Daftar Buah: \n\n'
+        for (i = 0; i < fruits.length; i++){
+            fruitList += i + ' | ' + fruits[i].name + ' |  Stok' +  fruits[i].stock + ' |  Harga' + fruits[i].price + '\n'
+        }
+        alert(fruitList)
+    }
+    var mainMenu = true
+    var qtyMenu = true
+        do {
+            var menu = parseInt(prompt(
+                'Apa Yang ingin anda lakukan? \n\n' +
+                '0. Daftar Buah\n' +
+                '1. Menambah Buah\n' +
+                '2. Mengurangi Buah\n' +
+                '3. Membeli Buah'
+            ))
+            if(menu === 0){
+                showList();
+            }
+            else if (menu == 1){
+                var newName = prompt('Masukan Nama Buah');
+                var newStock = parseInt(prompt('Masukan jumlah stock'));
+                var newPrice = parseInt(prompt('Masukan jumlah harga'));
+                
+                fruits.push({name:newName,stock:newStock,price:newPrice,qty:0,total:0})
+
+                showList();
+            }
+            else if (menu ==2 ){
+                var produk = "";
+                for (var a = 0; a < fruits.length; a++) {
+                    produk += [a] + '.' + fruits[a].name +  "\n";
+                }
+                var hapus = prompt('Pilih Buah yang ingin dihapus \n\n' + produk)
+                if (hapus == null){
+                    hapus == null
+                } else
+                fruits.splice(hapus, 1)
+                showList();
+            }
+            else if (menu == 3 ){
+                for (i = 0; i <fruits.length; i++){
+                    do{
+                        fruits[i].qty = parseInt(prompt('Masukan Jumlah ' + fruits[i].name + '\n' + 'Stok ' +fruits[i].stock))
+                        if (fruits[i].qty > fruits[i].stock){
+                            alert('Kesalahan Input ^^')
+                            qtyMenu = true
+                        } 
+                        else {
+                            qtyMenu = false
+                        }
+                    } while (qtyMenu)
+                }
+                var total = '';
+                var totalharga = 0;
+                for (var i = [0]; i < fruits.length; i++) {
+                    total += fruits[i].name + ': ' + fruits[i].qty + ' x ' + fruits[i].price + ' = ' + (fruits[i].qty * fruits[i].price) + '\n';
+                    totalharga += (fruits[i].qty * fruits[i].price)
+                }
+                alert('Daftar Belanjaan : \n' +
+                    total + '\n' + 'Total: Rp ' + totalharga);
+
+                do {
+                    var uang = prompt('Masukan Total Uang' + '\n' + totalharga)
+                    var kembalian = uang - totalharga
+                    if (uang >= totalharga) {
+                        alert(
+                            'Total Pembayaran Rp ' + totalharga + '\n'
+                            + 'Uang Pembayaran Rp ' + uang + '\n'
+                            + 'Kembalian Rp' + kembalian
+                        )
+                        alert('Terima Kasih')
+                    }
+                    else {
+                        var kurang = uang - totalharga
+                        alert('Uang Kurang Sebesar' + kurang)
+                    }
+                } while (uang < totalharga);
+            }
+            mainMenu = confirm('Apakah ingin lanjut?')
+        } while (mainMenu)
+</script>
