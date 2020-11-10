@@ -146,3 +146,4 @@ var newArr = arr.map((val, index) =>{
 console.log(newArr)
 
 //commit
+//example
