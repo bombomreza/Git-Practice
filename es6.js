@@ -144,3 +144,5 @@ var newArr = arr.map((val, index) =>{
     console.log(index,val , "ini angka index")
 })
 console.log(newArr)
+
+//commit
