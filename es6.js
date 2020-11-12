@@ -139,12 +139,25 @@
 // });
 // console.log(newArr)
 
-var arr = [1,2,3,4,5,6,7,8,9]
-var newArr = arr.map((val, index) =>{
-    console.log(index,val , "ini angka index")
-})
-console.log(newArr)
+// var arr = [1,2,3,4,5,6,7,8,9]
+// var newArr = arr.map((val, index) =>{
+//     console.log(index,val , "ini angka index")
+// })
+// console.log(newArr)
 
 //commit
 //example
 //example 2
+
+// Ternary If
+var x = 5
+var y = 10
+console.log(
+    y > x ? "Ngops ah" : "Tipistipis"
+);
+// SAMA AJA KAYA GINI
+if (y>x){
+    console.log('ngops ah')
+} else {
+    console.log('tipistipis')
+}
