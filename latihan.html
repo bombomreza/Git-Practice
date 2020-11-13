@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,td,th {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 10px;
+
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <div>
+            <input type="text" name="username" id="username" placeholder="Username">
+            <input type="password" name="password" id="password" placeholder="Password">
+            <button onclick="login()">
+                Log In
+            </button>
+        </div>
+        <div>
+            <h4 id="output"></h4>
+        </div>
+    </center>
+    
+</body>
+<script>
+    let users = [
+        { username: 'bubu', password: 'abc', role: 'user'},
+        { username: 'baba', password: '123', role: 'admin'}
+    ]
+    class Activity{
+        constructor(nama, hari, image){
+            this.nama = nama,
+            this.hari = hari,
+            this.image = image
+        }
+    }
+    let data = [
+        new Activity('Lari','Senin','https://gamepedia.cursecdn.com/dota2_gamepedia/b/b0/NIGMA_logo.png'),
+        new Activity('Sepeda', 'Selasa', 'https://gamepedia.cursecdn.com/dota2_gamepedia/b/b0/NIGMA_logo.png'),
+        new Activity('Berenang', 'Rabu', 'https://gamepedia.cursecdn.com/dota2_gamepedia/b/b0/NIGMA_logo.png'),
+        new Activity('SmackDown', 'Kamis', 'https://gamepedia.cursecdn.com/dota2_gamepedia/b/b0/NIGMA_logo.png')
+    ]
+    let logged;
+    // let newUsers
+    
+    function login(){
+        let username = document.getElementById('username').value
+        let password = document.getElementById('password').value
+        // CARA SATU
+        // for (let i = 0; i < users.length; i++) {
+            //     if (username === users[i].username && password === users[i].password){
+                //         return document.getElementById("output").innerHTML = ` Login sebagai ${users[i].username}`
+        //     }
+        // }
+        // return document.getElementById('output').innerHTML = `User tidak ditemukan`
+        // CARA KEDUA
+        logged = users.find ((val)=> { 
+            return val.username === username && val.password === password});
+        console.log(logged.username)
+        console.log(username)
+            if(logged){
+                return document.getElementById('output').innerHTML = `Login sebagai: ${logged.username} : ${logged.role}`
+        } else{
+            return document.getElementById('output').innerHTML = `User Tidak Ditemukan`
+        }
+        // ERROR
+        // let newUsers = users.map((val) =>{
+        //     if (username === val.username && password === val.password){
+        //         return document.getElementById('output').innerHTML = `Login Berhasil`
+        //     } else {
+        //         return document.getElementById('output').innerHTML = `error`
+
+        //     }
+        // });
+        // console.log(users.username)
+    }
+    
+    
+    // function login(){
+    //     var output = "";
+    //     var usernames = document.getElementById('username').value;
+    //     var passwords = document.getElementById('password').value;
+    //     var usersArr = users.map((val)=>{
+    //         if (usernames == val.username && passwords == val.password){
+    //             return document.getElementById('output').innerHTML = `Login sebagai: ${val.username}`
+                // return `
+                //     Login sebagai: ${val.username}
+                //     <br>
+                //     <table>
+                //         <thread>
+                //             <th>ID</th> 
+                //             <th>Activity</th>
+                //             <th>Image</th>
+                //             <th colspan="2">Action</th>
+                //         </thread>
+                //         <br>
+                //         <tbody id="gambar">
+                //         </tbody>
+                //     </table>
+                // `
+        //     }
+        // })
+        // console.log(usernames)
+        // console.log(passwords)
+        // console.log()
+        // return document.getElementById("output").innerHTML = usersArr.join("");
+    // }
+
+    // function showList(){
+    //     var newActivity = data.map((val)=>{
+    //         return `
+    //                 <tr>
+    //                     <tb>1 </tb>
+    //                     <tb>2 </tb>
+    //                     <tb>3 </tb>
+    //                     <tb>4 </tb>
+    //                     <tb>5 </tb>
+    //                 </tr>
+    //         `
+    //     })
+        
+    //     return document.getElementById("gambar").innerHTML = newActivity.join("");
+    // }
+
+
+</script>
+</html>

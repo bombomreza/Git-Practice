@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="number" id="shapeSelect" placeholder="1-3">
+    <input type="number" id="sizeSelect" placeholder="Select Your Size">
+    <button onclick="createShape()">
+        Click Me
+    </button>
+    <h1 id="output">
+    </h1>
+</body>
+<script>
+    function createShape(){
+        var shapeType = document.getElementById('shapeSelect').value;
+        var shapeSize = document.getElementById('sizeSelect').value;
+        console.log(shapeType,shapeSize)
+        if (shapeType == 1){
+            return square(shapeSize)
+        }else if (shapeType == 2){
+            triangle(shapeSize)
+        } else if (shapeType == 3) {
+            revTriangle(shapeSize)
+        } else if (shapeType == 4) {
+            eTriangle(shapeSize)
+        } else if (shapeType == 5){
+            tTriangle(shapeSize)
+        }
+    }
+    function square(num){
+        var output = "";
+        for (let i = 0; i < num; i++) {
+            for (let j = 0; j < num; j++) {
+                output +="*"
+            }
+            output +="<br>"
+        }
+        return document.getElementById("output").innerHTML = output;
+    }
+    function triangle(num){
+        var output = "";
+        for (var i = 0; i <= num; i++) {
+            for (let j = 0; j < i; j++) {
+                output +="* "
+            }
+            output += "<br>";
+        }
+        return document.getElementById('output').innerHTML = output;
+    }
+    function revTriangle(num){
+        var output = "";
+        for (var i = 0; i <= num; i++) {
+            for (let j = num; j > i; j--) {
+                output += "* "
+            }
+            output += "<br>";
+        }
+        return document.getElementById('output').innerHTML = output;
+    }
+    function eTriangle(num){
+        var output = "";
+        for (let i = 0; i <= num; i++) {
+            for (let j = num; j > i ; j--) {
+                output +="&nbsp&nbsp&nbsp"
+            }
+            for (let k = 0; k < i; k++) {
+                output +="* " 
+            }
+            output +="<br>"
+        }
+        return document.getElementById("output").innerHTML = output
+    }
+    function tTriangle(num){
+        var output = "";
+    }
+</script>
+</html>

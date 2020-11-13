@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,
+        tr,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <div>
+            <input type="text" name="username" id="username" placeholder="Username">
+            <input type="password" name="password" id="password" placeholder="Password">
+            <button onclick="login()">
+                Log In
+            </button>
+        </div>
+        <br>
+        <br>
+        <br>
+        <div id="tableContainer" style="display: none;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Activity</th>
+                        <th>Day</th>
+                        <th>Image</th>
+                        <th colspan="2">Action</th>
+                    </tr>
+                </thead>
+                <tbody id="tableContent">
+
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 id="output"></h4>
+        </div>
+    </center>
+</body>
+<script>
+
+    class Activity {
+        constructor(nama, hari, image) {
+            this.nama = nama,
+                this.hari = hari,
+                this.image = image
+        }
+    }
+
+    let data = [
+        new Activity('Lari', 'Senin', 'https://chouprojects.com/wp-content/uploads/2014/12/html.png'),
+        new Activity('Estafet', 'Selasa', 'https://chouprojects.com/wp-content/uploads/2014/12/html.png'),
+        new Activity('Basket', 'Rabu', 'https://chouprojects.com/wp-content/uploads/2014/12/html.png'),
+        new Activity('Tinju', 'Kamis', 'https://chouprojects.com/wp-content/uploads/2014/12/html.png'),
+    ]
+
+    let logged;
+
+    let users = [
+        { username: 'baba', password: 'abc', role: 'user' },
+        { username: 'bubu', password: '123', role: 'admin' },
+    ]
+
+    function login() {
+        let username = document.getElementById("username").value; //"lian"
+        let password = document.getElementById("password").value; // "abc"
+
+        // for(var i = 0; i<users.length; i++){
+        //     if(username === users[i].username && password === users[i].password){
+        //         return document.getElementById("output").innerHTML = `Login sebagai: ${users[i].username}`;
+        //     }
+        // }
+        // return document.getElementById("output").innerHTML = `User tidak ditemukan`;
+
+        logged = users.find((val) => {
+            return val.username === username && val.password === password
+        });
+        console.log(logged);
+        if (logged) {
+            document.getElementById("tableContainer").style.display = "block";
+            showList();
+            console.log(logged)
+            return document.getElementById("output").innerHTML = `Login sebagai: ${logged.username} : ${logged.role}`
+        } else {
+            document.getElementById("tableContainer").style.display = "none";
+            return document.getElementById("output").innerHTML = `User tidak ditemukan`
+        }
+    }
+
+    function showList(arr, i) {
+        let newArr;
+        newArr = data.map((val, index) => {
+            if (index === i){
+                return (`
+                    <tr>
+                        <td>${index + 1} </td>
+                        <td><input type="text" id="editName" placeholder ="${val.nama}"></td>
+                        <td>   <select id='editHari'>
+                                <option>Senin</option>
+                                <option>Selasa</option>
+                                <option>Rabu</option>
+                                <option>Kamis</option>
+                                <option>Jumat</option>
+                                <option>Sabtu</option>
+                                <option>Minggu</option>
+                                </select></td>
+                        <td><input type="text" id="editImage" placeholder="${val.image}"></td>
+                        <td><button onclick="confirmEdit(${index})">Confirm</button></td>
+                        <td><button onclick="cancelData(${index})">Cancel</button></td>
+                    </tr>
+                `)
+            }else {
+                return (
+                    `
+                    <tr>
+                        <td>${index + 1}</td>
+                        <td>${val.nama}</td>
+                        <td>${val.hari}</td>
+                        <td><img src="${val.image}" alt="image${index}" height="120px" width="120px"></td>
+                        ${logged.role === 'admin' ? `<td><button onclick='editData(${index})'>Edit</button></td><td><button onclick='deleteData(${index})'>Delete</button></td>` : "<td></td>"}
+                        </tr>
+                        `
+                        );
+                };
+            });
+                let addTd = `
+                    <tr>
+                        <td></td>
+                        <td><input type="text" id="inputName" placeholder="Input Activity"></td>
+                        <td>
+                            <select id='inputHari'>
+                                <option>Senin</option>
+                                <option>Selasa</option>
+                                <option>Rabu</option>
+                                <option>Kamis</option>
+                                <option>Jumat</option>
+                                <option>Sabtu</option>
+                                <option>Minggu</option>
+                                </select>
+                                </td>
+                                <td><input type="text" id="inputUrl" placeholder="Input Url"></td>
+                        <td colspan="2"><button onclick="addItem()">Add</button></td>
+
+
+                    </tr>
+                    <br><br>
+                    <div><button onclick="logout()">Logout</button></div>
+                    
+                    `
+            return document.getElementById("tableContent").innerHTML = newArr.join("") + (logged.role === 'admin' ? addTd : "");
+        }
+                        
+                            
+    function deleteData(index){
+    console.log(data[index])
+    data.splice(index, 1);
+        showList();
+    }
+    function editData(index){
+        console.log(data[index])
+        showList(data, index)
+    }
+    function cancelData(){
+        showList(data)
+    }
+    function confirmEdit(index){
+        var newName, newHari, newImage;
+        newName = document.getElementById('editName').value;
+        newHari = document.getElementById('editHari').value;
+        newImage = document.getElementById('editImage').value;
+
+        data[index].nama = newName
+        data[index].hari = newHari
+        data[index].image = newImage
+
+        showList (data)
+
+    }
+    function addItem(){
+        var nama = document.getElementById('inputName').value;
+        var hari = document.getElementById('inputHari').value;
+        var image = document.getElementById('inputUrl').value;
+
+        data.push({
+            nama,
+            hari,
+            image
+
+        })
+        showList(data)
+    }
+    function logout(){
+        document.getElementById("tableContainer").style.display = "none";
+        return document.getElementById("output").innerHTML = `Akun telah Logout`
+        
+    }
+</script>
+
+</html>
